@@ -23,7 +23,7 @@ private:
 
 public:
     Triangle(double,double,double);
-    Figure* Clone();
+    virtual Figure* Clone();
 
     int TestMySides();
 
@@ -34,6 +34,23 @@ public:
     double Perimeter();
     double Space();
 }; 
+
+class Circle : public Figure{
+
+private:
+
+    double R;
+
+public:
+    Circle(double);
+    virtual Figure* Clone();
+
+    double GetR();
+    int TestMySides();
+
+    double Perimeter();
+    double Space();
+};
 
 class Prism {
 
@@ -46,11 +63,13 @@ public:
 
     ~Prism();
 
-    virtual double GetH() = 0;
+    virtual double GetH();
 
-    virtual double BaseSpace() = 0;
-    virtual double FullSpace() = 0;
-    virtual double Volume() = 0;
+    virtual int TestHeight();
+
+    virtual double BaseSpace();
+    virtual double FullSpace();
+    virtual double Volume();
 };
 
 class TrianglePrism : public Prism {
@@ -61,10 +80,18 @@ public:
     double GetB();
     double GetC();
 
-    double GetH();
+    //double GetH();
 
-    double FullSpace();
-    double BaseSpace();
-    double Volume();
+    //double FullSpace();
+    //double BaseSpace();
+    //double Volume();
     
+};
+
+class Cylinder : public Prism{
+public:
+    Cylinder(double new_h, Figure* new_base) : Prism(new_h,new_base){};
+
+    double GetR();
+
 };

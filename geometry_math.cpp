@@ -1,4 +1,5 @@
-#include "figure.h"
+ #include "figure.h"
+ #include "cmath"
 
 // Все вычисления для фигур в этом файле
 
@@ -14,17 +15,28 @@ double Triangle::Perimeter(){
     return a+b+c;
 }
 
-//// ТРЕУГОЛЬНАЯ ПРИЗМА ////
+//// ОКРУЖНОСТЬ ////
 
-double TrianglePrism::BaseSpace(){
+double Circle::Perimeter(){
+    return 2* M_PI * R;
+}
+
+double Circle::Space(){
+    return M_PI * R * R;
+}
+
+
+////ПРИЗМА////
+
+double Prism::BaseSpace(){
     return base->Space();
 }
 
-double TrianglePrism::FullSpace(){
+double Prism::FullSpace(){
     double base_space = base->Space();
     return base->Space()*2 + base->Perimeter()*h;
 }
 
-double TrianglePrism::Volume(){
+double Prism::Volume(){
     return base->Space()*h;
 }

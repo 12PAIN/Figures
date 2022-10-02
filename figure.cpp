@@ -13,6 +13,41 @@ Prism::~Prism(){
     delete base;
 }
 
+double Prism::GetH(){
+    return h;
+}
+
+int Prism::TestHeight(){
+    if(h <= 0){
+        return DATA_ERROR;
+    }
+    else{
+        return 0;
+    }
+}
+
+///// ОКРУЖНОСТЬ ////
+
+Circle::Circle(double R){
+    this->R = R;
+}
+
+int Circle::TestMySides(){
+    if(R <= 0){
+        return DATA_ERROR;
+    }
+    else{
+        return 0;
+    }
+}
+
+double Circle::GetR(){
+    return R;
+}
+
+Figure* Circle::Clone(){
+    return new Circle(this->R);
+}
 
 ///// ТРЕУГОЛЬНИК ////
 
@@ -59,8 +94,11 @@ double TrianglePrism::GetB(){
 double TrianglePrism::GetC(){
     Triangle* temp_triangle = static_cast<Triangle*>(base);
     return temp_triangle->GetC();
-}
+};
 
-double TrianglePrism::GetH(){
-    return h;
+//// ЦИЛИНДР ////
+
+double Cylinder::GetR(){
+    Circle* tmpCircle = static_cast<Circle*>(base);
+    return tmpCircle->GetR();
 }
