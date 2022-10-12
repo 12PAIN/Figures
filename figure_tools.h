@@ -2,10 +2,13 @@
 #include "figure.h"
 #include <vector>
 
+#define TYPE_TRIANGLEPRISM 1
+#define TYPE_CYLINDER 0
+
 Figure* createFigure(double,double,double);
 Figure* createFigure(double);
 
-Prism* createPrism(double, Figure, int type);
+Prism* createPrism(double, Figure*, int type);
 
 TrianglePrism* getCastedTrianglePrism(Prism*);
 Cylinder* getCastedCylinder(Prism*);
